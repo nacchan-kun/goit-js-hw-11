@@ -4,8 +4,8 @@ import iziToast from 'izitoast';
 import SimpleLightbox from 'simplelightbox';
 // import "simplelightbox/dist/simple-lightbox.min.css";
 
-import errorIcon from '/src/img/izi-toast-svg/error-icon.svg';
-// import successIcon from '/src/img/izi-toast-svg/success-icon.svg';
+import errorIcon from './img/izi-toast-svg/error-icon.svg';
+// import successIcon from './src/img/izi-toast-svg/success-icon.svg';
 
 import { fetchPhotos } from './js/pixabay-api';
 import { createGalleryCardTemplate } from './js/render-functions';
