@@ -1,11 +1,13 @@
-// webformatURL — посилання на маленьке зображення для списку карток у галереї
-// largeImageURL — посилання на велике зображення для модального вікна
-// tags — рядок з описом зображення. Підійде для атрибута alt
-// likes — кількість вподобайок
-// views — кількість переглядів
-// comments — кількість коментарів
-// downloads — кількість завантажень
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
+const galleryRef = document.querySelector('.gallery');
+let lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
+
+// Створення HTML для однієї картки
 export const createGalleryCardTemplate = cardsArr =>
   cardsArr
     .map(
@@ -46,3 +48,26 @@ export const createGalleryCardTemplate = cardsArr =>
 `
     )
     .join('');
+
+// Рендер галереї
+export function renderGallery(cardsArr) {
+  const markup = createGalleryCardTemplate(cardsArr);
+  galleryRef.insertAdjacentHTML('beforeend', markup);
+  lightbox.refresh(); // оновлення для SimpleLightbox
+}
+
+// Очищення галереї
+export function clearGallery() {
+  galleryRef.innerHTML = '';
+}
+
+// Функції для керування лоадером (якщо він є в HTML)
+const loader = document.querySelector('.loader');
+
+export function showLoader() {
+  loader?.classList.remove('is-hidden');
+}
+
+export function hideLoader() {
+  loader?.classList.add('is-hidden');
+}
